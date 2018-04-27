@@ -30,6 +30,17 @@ class Video {
         });
     }
 
+    fetchCurrentArtistPromise(callback) {
+        return new Promise((resolve,reject) => {
+            $.ajax({
+                success: user => {callback(resolve(this.parseJSON(user)))},
+                    fail: ()=>reject(()=>{error: 'User not found'}),
+                    type: 'GET',
+                    url: 'http://example.com/currentArtist',
+            });
+        });
+    }
+
 
     getRandomQuotes(url, data ) { 
         $.ajax({ 
