@@ -26,76 +26,43 @@ test("Verify if it doesnt match mobile", () => {
 //     expect(spy).toHaveBeenCalledWith(payload);
 // });
 
-test("Very if random quotes json via mock has not received", ()=> {
-    const spy = jest.spyOn(video, 'getRandomQuotes');
-    let data = "x";
-    const result = video.getRandomQuotes('https://api.myjson.com/bins/bqzwr', data);
-    expect(spy).toHaveBeenCalled();
-    expect(result).toBe(undefined);
-  });
+// jest.mock('jquery');
 
-//   jest.mock('../mocks/request')
-
-//   describe('#getUser() using Promises', () => {
-//     // it('should load user data', () => {
-//     //   return video.getID('olay')
-//     //   .then(data => {
-//     //     expect(data).toBeDefined()
-//     //     expect(data.entity.id).toEqual('3457693')
-//     //   })
-//     // })
+// test("Very if random quotes json via mock has not received", ()=> {
+//     jest.resetModules()
+//     const spy = jest.spyOn(video, 'getRandomQuotes');
+//     let data = "xyz";
+//     const result = video.getRandomQuotes('https://api.myjson.com/bins/bqzwr', data);
+//     expect(spy).toHaveBeenCalled();
+//     expect(result).toBe(undefined);
+//   });
 
 
-//     it('should load user data', async () => {
-//         const data = await video.getID('olay')
-//         expect(data).toBeDefined()
-//         expect(data.entity.id).toEqual('3457693')
-//       })
+// it('calls the callback when $.ajax requests are finished', () => {
 
+//     jest.resetModules()
 
-//   })
+//     //const fetchCurrentUser = require('../fetchCurrentUser');
+  
+//     // Create a mock function for our callback
+//     const callback = jest.fn();
+//     video.fetchCurrentUser(callback);
 
-
-jest.mock('jquery');
-
-beforeEach(() => jest.resetModules());
-
-it('calls into $.ajax with the correct params', () => {
-
-  //const fetchCurrentUser = require('../fetchCurrentUser');
-
-  // Call into the function we want to test
-  const dummyCallback = () => {};
-  video.fetchCurrentUser(dummyCallback);
-
-  // Now make sure that $.ajax was properly called during the previous
-  // 2 lines
-  expect($.ajax).toBeCalledWith({
-    success: expect.any(Function),
-    type: 'GET',
-    url: 'http://example.com/currentUser',
-  });
-});
-
-it('calls the callback when $.ajax requests are finished', () => {
-
-  //const fetchCurrentUser = require('../fetchCurrentUser');
-
-  // Create a mock function for our callback
-  const callback = jest.fn();
-  video.fetchCurrentUser(callback);
-
-  // Now we emulate the process by which `$.ajax` would execute its own
-  // callback
-  $.ajax.mock.calls[0 /*first call*/][0 /*first argument*/].success({
-    firstName: 'Bobby',
-    lastName: 'Marley',
-  });
-
-  // And finally we assert that this emulated call by `$.ajax` incurred a
-  // call back into the mock function we provided as a callback
-  expect(callback.mock.calls[0 /*first call*/][0 /*first arg*/]).toEqual({
-    fullName: 'Bobby Marley',
-    loggedIn: true,
-  });
-});
+//     const spy = jest.spyOn(video, 'fetchCurrentUser');
+//     // Now we emulate the process by which `$.ajax` would execute its own
+//     // callback
+   
+//     $.ajax.mock.calls[0 /*first call*/][0 /*first argument*/].success({
+//       firstName: 'Bobby',
+//       lastName: 'Marley',
+//     });
+//     // var result = callback.mock.calls[0 /*first call*/][0 /*first arg*/];
+//     // console.log('result of call back full name ... '+result.fullName);
+//     expect(callback).toHaveBeenCalledTimes(1);
+//     // And finally we assert that this emulated call by `$.ajax` incurred a
+//     // call back into the mock function we provided as a callback
+//     expect(callback.mock.calls[0 /*first call*/][0 /*first arg*/]).toEqual({
+//       fullName: 'Bobby Marley',
+//       loggedIn: true,
+//     });
+//   });

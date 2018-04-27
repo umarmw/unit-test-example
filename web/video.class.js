@@ -17,16 +17,16 @@ class Video {
 
     parseJSON(user) {
         return {
-            fullName: user+ ' '+user.firstName + ' ' + user.lastName,
+            fullName: user.firstName + ' ' + user.lastName,
             loggedIn: true,
         };
     }
 
-    fetchCurrentUser(callback) {
+    fetchCurrentArtist(callback) {
         return $.ajax({
             success: user => callback(this.parseJSON(user)),
             type: 'GET',
-            url: 'http://example.com/currentUser',
+            url: 'http://example.com/currentArtist',
         });
     }
 
@@ -38,13 +38,6 @@ class Video {
             fail: ()=> {return false}, 
             complete: ()=> {return "";} 
         }); 
-    }
-
-    getID(brand){
-        $.ajax({
-            url: "https://example.api/${brand}",
-            success: data => {return data;}
-            });
     }
 }
 
